@@ -17,15 +17,6 @@ plugins {
     kotlin("android")
 }
 
-kotlin {
-    jvmToolchain(11)
-}
-
-repositories {
-    google()
-    mavenCentral()
-}
-
 android {
     namespace = "me.omico.compose.material3.pullrefresh"
     compileSdk = 34
@@ -36,16 +27,19 @@ android {
         compose = true
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = localProperty("project.compose.compiler.version")
+        kotlinCompilerExtensionVersion = "1.5.3"
     }
 }
 
 dependencies {
-    compileOnly(platform("androidx.compose:compose-bom:${localProperty("project.compose.bom.version")}"))
+    compileOnly(platform("androidx.compose:compose-bom:2023.10.01"))
     compileOnly("androidx.compose.foundation:foundation")
     compileOnly("androidx.compose.material3:material3")
     compileOnly("androidx.compose.ui:ui")
